@@ -26,6 +26,7 @@ body {
     font-size: 14px;
 }
 
+
 section {
     padding-top: 80px;
     padding-bottom: 80px;
@@ -105,6 +106,31 @@ border:2px solid #16A8C2;
     -moz-background-size: cover;
 }
 
+#home_admin {
+    background: url(../img/admin_background.jpg) no-repeat center center; /*Full Witdth background image*/
+    padding: 0;
+    -webkit-background-size: cover;
+    background-size: cover;
+    -moz-background-size: cover;
+}
+    #home_admin .overlay {
+        padding-top: 120px;
+   
+        min-height: 400px;
+        height:800px;
+        padding-bottom: 40px;
+    }
+
+        #home_admin h4 {
+        /*margin-top: 120px;*/
+        margin-bottom: 40px;
+        line-height:40px;
+        letter-spacing:2px;
+        font-size:20px;
+    }
+
+
+
     #home .overlay {
         padding-top: 120px;
         background-color: rgba(34, 34, 34, 0.4);
@@ -166,7 +192,9 @@ border:2px solid #16A8C2;
         margin: 0 auto;
 
     }
-
+    /*================================
+   CUSTOM STYLES
+==================================*/
 
 .sign_input {
     min-width: 250px;
@@ -189,9 +217,42 @@ border:2px solid #16A8C2;
     text-align: center;}
 
 .submit-sign{
-margin-bottom: 10px;
+    margin-bottom: 10px;
     border: none;
     font-size: 17px;
+
+    }
+
+.profile_btn{
+width:65px;
+color:#00000000;
+}
+
+    .profile_btn img{
+    width:40px;
+    height:;
+    color:#00000000;
+    margin-left:-15%;
+
+    }
+    
+    .profile_btn:hover{
+    opacity: 1;
+    width:220px;
+    color:#000;
+    }
+     
+.bio_div b{
+    font-size: 25px;
+    font-weight: bold;
+    color:;
+    margin-top:-100px;
+    margin: 0;
+    padding: 0;
+}
+    .bio_div p{
+        color:#ccc;
+        margin-top: -10px;
     }
 
 

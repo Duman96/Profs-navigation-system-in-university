@@ -7,10 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 //@WebServlet(name = "signup")
 public class signup extends HttpServlet {
@@ -31,10 +28,14 @@ public class signup extends HttpServlet {
             String id = request.getParameter("id");
             String email = request.getParameter("email");
             String password = request.getParameter("password");
+            String conpassword = request.getParameter("conpassword");
 
-            String sql = "insert into users(user_name, user_surname, user_nickname, user_studentid, user_email, user_pwd) values(\""+ firstname + "\", \""+lastname+"\",\""+ username + "\",\""+id+"\",\""+email+"\",\""+password+"\")";
+            /*if(firstname.isEmpty() || lastname.isEmpty() || username.isEmpty() || id.isEmpty() || email.isEmpty() || password.isEmpty()){
 
-            System.out.println(sql);
+            }*/
+            ResultSet rs, rs1;
+            Statement st, st1;
+
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/seproj"+
@@ -44,13 +45,40 @@ public class signup extends HttpServlet {
                     "&useLegacyDatetimeCode=false"+
                     "&amp"+
                     "&serverTimezone=UTC", "root", "");
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.executeUpdate();
-            //PrintWriter out = response.getWriter();
-            //out.println("Success yeah");
-            request.getRequestDispatcher("/index.jsp").forward(request, response);
 
-        }
+            String query = "SELECT * FROM students WHERE user_first = \""+ firstname + "\" AND user_last = \"" + lastname + "\" AND Student_ID = \"" + id + "\"";
+            String query1 = "SELECT * FROM users WHERE user_nickname = \""+ username + "\" AND user_studentid = \"" + id + "\"";
+            st = conn.createStatement();
+            st1 = conn.createStatement();
+            rs = st.executeQuery(query);
+            rs1 = st1.executeQuery(query1);
+
+
+            if(!password.equals(conpassword)){
+                request.setAttribute("error", "Passwords must match each other");
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
+            }else{
+                if(rs.next()) {
+
+                    if(rs1.next()){
+                        request.setAttribute("error2", "Login already taken");
+                        request.getRequestDispatcher("/index.jsp").forward(request, response);
+                    }else{
+                    String sql = "insert into users(user_name, user_surname, user_nickname, user_studentid, user_email, user_pwd) values(\"" + firstname + "\", \"" + lastname + "\",\"" + username + "\",\"" + id + "\",\"" + email + "\",\"" + password + "\")";
+
+                    System.out.println(sql);
+
+                    PreparedStatement ps = conn.prepareStatement(sql);
+                    ps.executeUpdate();
+                    //PrintWriter out = response.getWriter();
+                    //out.println("Success yeah");
+                    request.getRequestDispatcher("/index.jsp").forward(request, response);
+                }
+                }else{
+                    request.setAttribute("error1", "You must be a NU student to access this site");
+                    request.getRequestDispatcher("/index.jsp").forward(request, response);
+                }
+        }}
         catch (ClassNotFoundException e)
         {
             e.printStackTrace();

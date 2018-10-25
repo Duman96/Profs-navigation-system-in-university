@@ -65,6 +65,18 @@
     </style>
 </head>
 <body>
+
+    <%
+
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        response.setHeader("Pragma", "no-cache");
+        response.setDateHeader("Expires", 0);
+
+        if(session.getAttribute("username") == null){
+            response.sendRedirect("/index.jsp");
+        }
+
+    %>
    <div class="navbar navbar-default navbar-fixed-top scroll-me">
         <!-- pass scroll-me class above a tags to starts scrolling -->
         <div class="container">
@@ -83,6 +95,9 @@
                     <li><a href="/profs.jsp">Professors</a></li>
                     <li><a href="#subscribe">About Us</a></li>
                     <li style = "margin-left: 50px;"><a href="#features">My Profile</a></li>
+                    <li><form action="/logout">
+                        <input type="submit" value="Logout">
+                    </form></li>
                 </ul>
             </div>
 

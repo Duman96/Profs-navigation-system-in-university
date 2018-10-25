@@ -23,6 +23,18 @@
     <![endif]-->
 </head>
 <body>
+
+<%
+
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    response.setHeader("Pragma", "no-cache");
+    response.setDateHeader("Expires", 0);
+
+    if(session.getAttribute("username") == null){
+        response.sendRedirect("/index.jsp");
+    }
+
+%>
    <div class="navbar navbar-default navbar-fixed-top scroll-me">
         <!-- pass scroll-me class above a tags to starts scrolling -->
         <div class="container">
@@ -32,14 +44,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">
-                 <strong>HANDICAP</strong>   
+                <a class="navbar-brand" href="index.jsp">
+                 <strong>NULL</strong>   
                 </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#about">Professors</a></li>
-                    <li><a href="#features">Courses</a></li>
+                    <li><a href="profs.jsp">PROFESSOR</a></li>
+                    <li><a href="#features">COURSES</a></li>
+                    <li><a href="profile_s.jsp">PROFILE</a></li>
                 </ul>
             </div>
 
@@ -71,7 +84,7 @@
     </div>
     <div class="footer">
         <center>
-                    <b>Designed by Handicap TM </b> <br>
+                    <b>Designed by NULL TM </b> <br>
                 
         </center>
 
@@ -91,7 +104,9 @@
                    <img src="assets/img/adnan.jpg" class="prof_img">
                    <h5>School of Science and Technology</h5>
                     <h5>Computer Science</h5>
-                     <a href="#subscribe" data-toggle="modal" data-target=".bd-example-modal-sm-msg" style="width:45%;" class="btn btn-custom btn-one" >Write a Message</a>
+                          <div style="margin-left:-20px;"class="col-md-10 col-10 col-lg-10 col-xl-10"> 
+                            <a href="#subscribe" data-toggle="modal" data-target=".bd-example-modal-sm-msg"  class="btn btn-custom btn-two profile_btn"><b class="avatar_type_1"><img src="assets/img/message.png">Write a Message</b></a>
+                        </div>
                 </div>
                 <div class="col-md-4">
                     <h4>Bio</h4>
@@ -119,7 +134,9 @@
                    <img src="assets/img/mark_sterling.jpeg" class="prof_img">
                    <h5>School of Science and Technology</h5>
                     <h5>Computer Science</h5>
-                     <a href="#subscribe" data-toggle="modal" data-target=".bd-example-modal-sm-msg" style="width:45%;" class="btn btn-custom btn-one" >Write a Message</a>
+                        <div style="margin-left:-20px;"class="col-md-10 col-10 col-lg-10 col-xl-10"> 
+                            <a href="#subscribe" data-toggle="modal" data-target=".bd-example-modal-sm-msg"  class="btn btn-custom btn-two profile_btn"><b class="avatar_type_1"><img src="assets/img/message.png">Write a Message</b></a>
+                        </div>
                 </div>
                 <div class="col-md-4">
                     <h4>Bio</h4>
@@ -156,7 +173,9 @@ processing as applied to translational medicine and mobile sensing.
                    <img src="assets/img/askar_boranbay.jpg" class="prof_img">
                    <h5>School of Science and Technology</h5>
                     <h5>Computer Science</h5>
-                     <a href="#subscribe" data-toggle="modal" data-target=".bd-example-modal-sm-msg" style="width:45%;" class="btn btn-custom btn-one" >Write a Message</a>
+                         <div style="margin-left:-20px;"class="col-md-10 col-10 col-lg-10 col-xl-10"> 
+                            <a href="#subscribe" data-toggle="modal" data-target=".bd-example-modal-sm-msg"  class="btn btn-custom btn-two profile_btn"><b class="avatar_type_1"><img src="assets/img/message.png">Write a Message</b></a>
+                        </div>
                 </div>
                 <div class="col-md-4">
                     <h4>Bio</h4>
@@ -275,7 +294,7 @@ processing as applied to translational medicine and mobile sensing.
 
     <div class="footer">
         <center>
-                    <b>Designed by Handicap TM </b> <br>
+                    <b>Designed by NULL TM </b> <br>
                 
         </center>
 

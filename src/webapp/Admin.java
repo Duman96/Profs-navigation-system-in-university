@@ -11,9 +11,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.*;
 
-//@WebServlet(name = "login")
-public class login extends HttpServlet {
-
+//@WebServlet(name = "Admin")
+public class Admin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         User userObject = new User();
@@ -21,11 +20,7 @@ public class login extends HttpServlet {
         request.setAttribute("username", request.getParameter("login"));
         request.setAttribute("password", request.getParameter("password"));
 
-
-        if(userObject.isAdmin(request.getParameter("login"), request.getParameter("password"))){
-            request.getRequestDispatcher("/admin.jsp").forward(request, response);
-        }
-        else if(userObject.isValidUserCredentials(request.getParameter("login"), request.getParameter("password"))){
+        if(userObject.isValidAdminCredentials(request.getParameter("login"), request.getParameter("password"))){
 
             HttpSession session = request.getSession();
             session.setAttribute("username", request.getParameter("login"));
@@ -39,9 +34,6 @@ public class login extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        PrintWriter out = response.getWriter();
-
-        out.print("Login: "+request.getParameter("login")+" Password: "+request.getParameter("password"));
 
     }
 }

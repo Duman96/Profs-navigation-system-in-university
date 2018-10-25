@@ -68,4 +68,67 @@ public class Database_User {
 
         return isValid;
     }
+
+    public boolean isValidAdmin (String username, String pwd){
+
+        boolean isValid = false;
+
+        Connection conn = null;
+        Statement st = null;
+        ResultSet rs;
+        String sql = "";
+
+        try{
+            Class.forName(jdbc);
+
+            System.out.println("Connecting....");
+
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/seproj"+
+                    "?verifyServerCertificate=false"+
+                    "&useSSL=false"+
+                    "&requireSSL=false"+
+                    "&useLegacyDatetimeCode=false"+
+                    "&amp"+
+                    "&serverTimezone=UTC", "root", "");
+            st = conn.createStatement();
+
+            sql = "SELECT * FROM admins WHERE admin_nickname = \""+ username + "\" AND admin_pwd = \"" + pwd + "\"";
+
+            System.out.println(sql);
+
+            rs = st.executeQuery(sql);
+
+            if(rs.next()){
+                isValid = true;
+            }
+
+            rs.close();
+            st.close();
+            conn.close();
+
+        }catch(SQLException sx){
+            sx.printStackTrace();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+
+            try{
+                if(st!=null){
+                    st.close();
+                }
+            }catch (SQLException se1){
+            }
+            try{
+                if(conn!=null){
+                    conn.close();
+                }
+            }catch(SQLException se2){
+                se2.printStackTrace();
+            }
+        }
+
+        System.out.println("Closing connection....");
+
+        return isValid;
+    }
 }

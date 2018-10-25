@@ -24,11 +24,17 @@
 </head>
 <body>
 
-    <%
-        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-        response.setHeader("Pragma", "no-cache");
-        response.setHeader("Expires", "0");
-    %>
+<%
+
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    response.setHeader("Pragma", "no-cache");
+    response.setDateHeader("Expires", 0);
+
+    if(session.getAttribute("username") == null){
+        response.sendRedirect("/index.jsp");
+    }
+
+%>
    <div class="navbar navbar-default navbar-fixed-top scroll-me">
         <!-- pass scroll-me class above a tags to starts scrolling -->
         <div class="container">
@@ -47,15 +53,13 @@
                     <li><a href="profs.jsp">PROFESSOR</a></li>
                     <li><a href="#features">COURSES</a></li>
                     <li><a href="profile_s.jsp">PROFILE</a></li>
-                    <li><a href="about.html">ABOUT US</a></li>
-
                 </ul>
             </div>
 
         </div>
     </div>
     <!-- NAVBAR SECTION END-->
-    <div id="home">
+   <!--  <div id="home">
         <div class="overlay">
             <div class="container">
                 <div class="row scroll-me" >
@@ -66,9 +70,9 @@
                         Eelit felis dolor vitae
 
                     </h4>
+                    <a href="#about" data-toggle="modal" data-target=".bd-example-modal-sm-sign-in" class="btn btn-custom btn-one" >Sign In</a>
+                    <a href="#subscribe" data-toggle="modal" data-target=".bd-example-modal-sm-sign-up" class="btn btn-custom btn-two" >Sign Up</a>
 
-                          <a href="#about" data-toggle="modal" data-target=".bd-example-modal-sm-sign-in" class="btn btn-custom btn-one" >SIGN IN</a>
-                          <a href="#subscribe" data-toggle="modal" data-target=".bd-example-modal-sm-sign-up" class="btn btn-custom btn-two" >SIGN UP</a>
                 </div>
                 </div>
               
@@ -81,8 +85,6 @@
     <div class="footer">
         <center>
                     <b>Designed by NULL TM </b> <br>
-
-            
                 
         </center>
 
@@ -90,32 +92,60 @@
 
 
     <!--HOME SECTION END  -->
-    <!-- <section id="about">
+<section id="about">
         <div class="container">
-            <div class="row scroll-me">
+
+
+                                    <div class="row scroll-me">
                 <div class="col-md-4">
-                    <h4>About This App </h4>
-                    <p>
-                       Morbi mollis lectus et ipsum sollicitudin varius.
-                         Aliquam tempus ante placerat, consectetur tellus nec, porttitor nulla.
-                         Maecenas a quam erat. Praesent vehicula ut magna sit amet ultrices.
-                    </p>
-                     <a href="#subscribe" class="btn btn-custom btn-three" ><i class="ion-ios-arrow-thin-right"></i> &nbsp;Explore Awesomeness</a>
+                    <h4>Adnan Yazici</h4>
+                    <h5>Department Chairman</h5>
+
+                   <img src="assets/img/adnan.jpg" class="prof_img">
+                   <h5>School of Science and Technology</h5>
+                    <h5>ID: 201490584</h5>
+                    <div style="margin-left:-20px;"class="col-md-10 col-10 col-lg-10 col-xl-10"> 
+                        <a href="#subscribe" data-toggle="modal" data-target=".bd-example-modal-sm-msg"  class="btn btn-custom btn-two profile_btn"><b class="avatar_type_1"><img src="assets/img/avatar.png">Change Avatar</b></a>
+                     
+                        <!--<a href="#subscribe" data-toggle="modal" data-target=".bd-example-modal-sm-msg"  class="btn btn-custom btn-two profile_btn"><b class="avatar_type_1"><img src="assets/img/avatar.png">Change Avatar</b></a>-->
+                    </div>
+                </div>
+                <div class="col-md-4 bio_div">
+                    <h4>Bio</h4>
+                        <br>
+                        <b> 3rd Grade </b>
+                        <p> Grade </p>
+                        <b> Astana </b>
+                        <p> Hometown </p>
+                        <b> +7 (705) 705 70 5 7 </b>
+                        <p> Phone </p>
+                        <b> adnan.yazici@nu.edu.kz </b>
+                        <p> E-mail </p>
+                        
+
+                 
                 </div>
                 <div class="col-md-4">
-                    <h4>Who is the Developer ?</h4>
-                    <p>
-                    <strong>   Jhon Deocarlic </strong> developed this app for the entertainment of the youth. He <strong>graduated</strong> from oxford unversity.
-                         Aliquam tempus ante placerat, consectetur tellus nec, porttitor nulla.
-                    </p>
+               <h4>Courses Taken</h4>
+               <ul>
+                <li>CSCI 111 – Web Programming & Problem Solving Course.</li>
+                <li>CSCI 151 – Programming for Scientists and Engineers Lab</li>
+                <li>CSCI 152 – Data Stuctures</li>
+                <li>CSCI 245 – System Analysis and Design.</li>
+                <li>CSCI 262 – Software Project Management.</li>
+                <li>CSCI 330, Mobile Computing</li>
+                <li>CSCI 336, Ubiquity and Sensing</li>
+                <li>CSCI 344, Data Mining and Decision Support</li> 
+                <li>CSCI 361, Software Engineering</li>
+                <li>CSCI 455, Scripting Languages</li>
+                <li>CSCI 512, Information Theory</li>
+                <li>CSCI 545, Big Data Analytics</li>
+             </ul>
                 </div>
-                <div class="col-md-4">
-               <h4>How you can reach him ?</h4>
-                    <p>
-                        You can reach him by sending text at <strong>  hello@thisdomain.com</strong>  . But please notice he doesn't reply for support mails, for support you have to send query at <i> support@thisdomain.com</i>.
-                    </p>
-                </div>
-            </div>
+            </div><br>
+
+
+
         </div>
     </section>
     <!-- ABOUT SECTION END-->
@@ -211,69 +241,34 @@
     </section>
     <!-- SOCIAL SECTION END-->
 
-    <!-- MODAL SING-IN-->
 
-<div class="modal fade bd-example-modal-sm-sign-in" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="footer">
+        <center>
+                    <b>Designed by NULL TM </b> <br>
+                
+        </center>
+
+    </div>
+
+    <!-- MODAL MSG-->
+
+<div class="modal fade bd-example-modal-sm-msg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
         <center>
-          <h2> Sign In</h2><hr>
-               <form action="/login" method="post">
-                <p>
-                <input class="sign_input" placeholder="Login" type="text" name="login" /><br />
-                 </p>
-                 <input class="sign_input" placeholder="Password" type="password" name="password" /><br />
-                 <hr>
-                <input type="submit" class="submit-sign"  name="submit" value="SUBMIT">
-         </form>
-            <center><p style="color:red;">${errorMessage}</p></center>
+      <h2> Message</h2><hr>
+     
+             <input class="msg_input" placeholder="Message" type="password" name="password" /><br />
+             <hr>
+            <input type="submit" class="submit-sign"  name="submit" value="SUBMIT">
+    </form>
         </center>
     </div>
   </div>
 </div>
 
-    <!-- MODAL SING-UP-->
 
-<div class="modal fade bd-example-modal-sm-sign-up" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-        <center>
-      <h2> Sign Up</h2><hr>
-           <form action="/signup" method="post">
-            <p>
-            <input class="sign_input" placeholder="Name" type="text" name="first_name" required/><br />
-         </p>
-            <p>
-            <input class="sign_input" placeholder="Surname" type="text" name="last_name" required/><br />
-         </p>
-            <p>
-            <input class="sign_input" placeholder="Login" type="text" name="username" required/><br />
-         </p>
-            <p>
-            <input class="sign_input" placeholder="ID" type="text" name="id" required/><br />
-         </p>
-             <p>
-             <input class="sign_input" placeholder="Email" type="text" name = "email" required/><br />
-         </p>
-               <!--<p>
-              <input class="sign_input" placeholder="Login" type="text" name="login" /><br />
-          </p>-->
-             <p>
-             <input class="sign_input" placeholder="Password" type="password" name="password" required/><br />
-         </p>
-             <input class="sign_input" placeholder="Confirm Password" type="password" name="conpassword" required/><br />
-               <hr>
-              <input type="submit" class="submit-sign"  name="submit" value="SUBMIT">
-      </form>
-            <center><p style="color:red;">${error}</p></center>
-            <center><p style="color:red;">${error1}</p></center>
-          </center>
-      </div>
-    </div>
-  </div>
-
-
-      <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+    <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
     <!-- CORE JQUERY  SCRIPTS -->
     <script src="assets/js/jquery-1.11.1.js"></script>
     <!-- BOOTSTRAP SCRIPTS  -->
