@@ -46,8 +46,25 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="profs.jsp">PROFESSOR</a></li>
                     <li><a href="#features">COURSES</a></li>
+                    <%
+                        if(session.getAttribute("username") != null){
+
+                    %>
                     <li><a href="profile_s.jsp">PROFILE</a></li>
+                    <%
+                        }
+                    %>
                     <li><a href="about.html">ABOUT US</a></li>
+                    <%
+                        if(session.getAttribute("username") != null){
+
+                    %>
+                    <li><form action="/logout">
+                        <input type="submit" value="Logout">
+                    </form></li>
+                    <%
+                        }
+                    %>
 
                 </ul>
             </div>
@@ -67,8 +84,17 @@
 
                     </h4>
 
+                          <%
+                            if(session.getAttribute("username") == null){
+
+                          %>
+
                           <a href="#about" data-toggle="modal" data-target=".bd-example-modal-sm-sign-in" class="btn btn-custom btn-one" >SIGN IN</a>
-                          <a href="#subscribe" data-toggle="modal" data-target=".bd-example-modal-sm-sign-up" class="btn btn-custom btn-two" >SIGN UP</a>
+                          <a href="#subscribe" data-toggle="modal" data-target=".bd-example-modal-sm-sign-up" class="btn btn-custom btn-two" >SIGN UP</a
+                          <%
+                              }
+                          %>
+
                 </div>
                 </div>
               
