@@ -24,11 +24,11 @@
 </head>
 <body>
 
-    <%
-        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+   <!-- <%
+        /*response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
         response.setHeader("Pragma", "no-cache");
-        response.setHeader("Expires", "0");
-    %>
+        response.setHeader("Expires", "0");*/
+    %>-->
    <div class="navbar navbar-default navbar-fixed-top scroll-me">
         <!-- pass scroll-me class above a tags to starts scrolling -->
         <div class="container">

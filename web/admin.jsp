@@ -225,7 +225,7 @@ body{
                                     <figcaption class="slide-caption">
 
                                         <h2> Welcome Master</h2><hr>
-                                                       <form action="reg.php" method="post">
+                                                       <form action="/admin" method="post">
                                                         <p>
                                                         <input class="sign_input" placeholder="Login" type="text" name="login" /><br />
                                                          </p>
