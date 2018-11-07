@@ -6,32 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c83ba7a-9605-4d8d-9a5e-2dcc9749b0ee" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SEProjects.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SEProjects.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SEProjects_war_exploded/SEProjects_war exploded.war" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SEProjects_war_exploded/SEProjects_war exploded.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SEProjects/DataBaseLayer/Database_User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SEProjects/DataBaseLayer/Database_User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SEProjects/appLayer/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SEProjects/appLayer/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SEProjects/jdbc/signup.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SEProjects/jdbc/signup.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SEProjects/webapp/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SEProjects/webapp/Admin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SEProjects/webapp/login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SEProjects/webapp/login.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SEProjects/webapp/logout.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SEProjects/webapp/logout.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jdbc/signup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jdbc/signup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/admin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/css/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/css/ionicons.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/css/ionicons.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/fonts/glyphicons-halflings-regular.svg" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/fonts/ionicons.svg" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/fonts/ionicons.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/js/jquery-1.11.1.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/assets/js/jquery-1.11.1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/courses.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/courses.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/profile_s.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/profile_s.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/profs.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/profs.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="1c83ba7a-9605-4d8d-9a5e-2dcc9749b0ee" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -202,7 +177,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/webapp/login.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
+            <state relative-caret-position="544">
               <caret line="42" column="7" lean-forward="true" selection-start-line="42" selection-start-column="7" selection-end-line="42" selection-end-column="7" />
             </state>
           </provider>
@@ -571,12 +546,12 @@
       <workItem from="1540805093951" duration="1534000" />
       <workItem from="1541416188882" duration="5570000" />
       <workItem from="1541488532957" duration="4709000" />
-      <workItem from="1541578950940" duration="4355000" />
+      <workItem from="1541578950940" duration="4534000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100355000" />
+    <option name="totallyTimeSpent" value="100534000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -739,7 +714,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/webapp/login.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
+        <state relative-caret-position="544">
           <caret line="42" column="7" lean-forward="true" selection-start-line="42" selection-start-column="7" selection-end-line="42" selection-end-column="7" />
         </state>
       </provider>
