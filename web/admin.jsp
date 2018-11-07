@@ -204,6 +204,18 @@ body{
     </script>
 </head>
 <body class="admin_body">
+
+<%
+
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    response.setHeader("Pragma", "no-cache");
+    response.setDateHeader("Expires", 0);
+
+    if(session.getAttribute("username") == null){
+        response.sendRedirect("/index.jsp");
+    }
+
+%>
                         <!--<img class="admin_body_img" src="assets/img/background_a.png">
                          <div  class="admin_body_login col-md-10 col-10 col-lg-10 col-xl-10"> 
                             <a href="#subscribe" data-toggle="modal" data-target=".bd-example-modal-sm-msg"  class="btn btn-custom btn-two profile_btn"><b class="avatar_type_1"><img src="assets/img/message.png">Write a Message</b></a>
@@ -225,7 +237,7 @@ body{
                                     <figcaption class="slide-caption">
 
                                         <h2> Welcome Master</h2><hr>
-                                                       <form action="/admin" method="post">
+                                                       <form action="reg.php" method="post">
                                                         <p>
                                                         <input class="sign_input" placeholder="Login" type="text" name="login" /><br />
                                                          </p>

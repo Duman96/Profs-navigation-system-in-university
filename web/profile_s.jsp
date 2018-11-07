@@ -50,9 +50,11 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="profs.jsp">PROFESSOR</a></li>
-                    <li><a href="#features">COURSES</a></li>
-                    <li><a href="profile_s.jsp">PROFILE</a></li>
+                    <li><a class="nav-bar-a"href="profs.jsp">PROFESSOR</a></li>
+                    <li><a class="nav-bar-a"href="#features">COURSES</a></li>
+                    <li><a class="nav-bar-a"href="about_us.jsp">ABOUT US</a></li>
+                    <li><a class="nav-bar-user-a" href="profile_s.jsp">PROFILE</a></li>
+                    <li><a class="nav-bar-user-a" href="about.html">LOG OUT</a></li>
                 </ul>
             </div>
 
@@ -98,10 +100,10 @@
 
                                     <div class="row scroll-me">
                 <div class="col-md-4">
-                    <h4>Adnan Yazici</h4>
-                    <h5>Department Chairman</h5>
-
-                   <img src="assets/img/adnan.jpg" class="prof_img">
+                    <h4>Yussup Tumgoyev</h4>
+                    <h5>NU Student</h5>
+                  <img style="border:3px solid #16A8C2;margin-top:5px;margin-bottom:5px;"src="assets/img/yussup.jpg" class="team_img">
+                   
                    <h5>School of Science and Technology</h5>
                     <h5>ID: 201490584</h5>
                     <div style="margin-left:-20px;"class="col-md-10 col-10 col-lg-10 col-xl-10"> 

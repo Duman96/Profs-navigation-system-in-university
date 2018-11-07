@@ -26,9 +26,9 @@
 
 <%
 
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    /*response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     response.setHeader("Pragma", "no-cache");
-    response.setDateHeader("Expires", 0);
+    response.setDateHeader("Expires", 0);*/
 
     if(session.getAttribute("username") == null){
         response.sendRedirect("/index.jsp");
@@ -47,12 +47,17 @@
                 <a class="navbar-brand" href="index.jsp">
                  <strong>NULL</strong>   
                 </a>
+
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="profs.jsp">PROFESSOR</a></li>
-                    <li><a href="#features">COURSES</a></li>
-                    <li><a href="profile_s.jsp">PROFILE</a></li>
+            <li><input class="search_input" placeholder="  Search..." type="text" name="search" /></li>
+            <li><button type = "button" class = "nav-bar-user-a" href="/Search">Search</button></li>
+                    <li><a class="nav-bar-a"href="profs.jsp">PROFESSOR</a></li>
+                    <li><a class="nav-bar-a"href="#features">COURSES</a></li>
+                    <li><a class="nav-bar-a"href="about_us.jsp">ABOUT US</a></li>
+                    <li><a class="nav-bar-user-a" href="profile_s.jsp">PROFILE</a></li>
+                    <li><a class="nav-bar-user-a" href="about.html">LOG OUT</a></li>
                 </ul>
             </div>
 
@@ -101,7 +106,7 @@
                     <h4>Adnan Yazici</h4>
                     <h5>Department Chairman</h5>
 
-                   <img src="assets/img/adnan.jpg" class="prof_img">
+                   <img src="assets/img/adnan.jpg" class="team_img">
                    <h5>School of Science and Technology</h5>
                     <h5>Computer Science</h5>
                           <div style="margin-left:-20px;"class="col-md-10 col-10 col-lg-10 col-xl-10"> 
@@ -308,7 +313,7 @@ processing as applied to translational medicine and mobile sensing.
         <center>
       <h2> Message</h2><hr>
      
-             <input class="msg_input" placeholder="Message" type="password" name="password" /><br />
+             <input class="msg_input" placeholder="Message" type="text" name="password" /><br />
              <hr>
             <input type="submit" class="submit-sign"  name="submit" value="SUBMIT">
     </form>

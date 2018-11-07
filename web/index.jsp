@@ -20,15 +20,29 @@
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                crossorigin="anonymous"></script>
+
+        <script>
+        $(document).ready(function() {
+            $("#lgn").submit(function(event) {
+                event.preventDefault();
+                var login = $("#val-login").val();
+                var password = $("#val-pwd").val();
+                var submit = $("#val-submit").val();
+                $(".error").load("/login", {
+                    login: login,
+                    password: password,
+                    submit: submit
+                });
+            }
+            )
+        }
+        </script>
     <![endif]-->
 </head>
 <body>
-
-   <!-- <%
-        /*response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-        response.setHeader("Pragma", "no-cache");
-        response.setHeader("Expires", "0");*/
-    %>-->
    <div class="navbar navbar-default navbar-fixed-top scroll-me">
         <!-- pass scroll-me class above a tags to starts scrolling -->
         <div class="container">
@@ -44,27 +58,20 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="profs.jsp">PROFESSOR</a></li>
-                    <li><a href="#features">COURSES</a></li>
+                    <li><a class="nav-bar-a"href="profs.jsp">PROFESSOR</a></li>
+                    <li><a class="nav-bar-a"href="#features">COURSES</a></li>
+                    <li><a class="nav-bar-a"href="about_us.jsp">ABOUT US</a></li>
                     <%
                         if(session.getAttribute("username") != null){
 
                     %>
-                    <li><a href="profile_s.jsp">PROFILE</a></li>
-                    <%
-                        }
-                    %>
-                    <li><a href="about.html">ABOUT US</a></li>
-                    <%
-                        if(session.getAttribute("username") != null){
+                    <li><a class="nav-bar-user-a" href="profile_s.jsp">PROFILE</a></li>
+                    <li><a class="nav-bar-user-a" href="/logout">LOG OUT</a></li>
 
-                    %>
-                    <li><form action="/logout">
-                        <input type="submit" value="Logout">
-                    </form></li>
                     <%
                         }
                     %>
+
 
                 </ul>
             </div>
@@ -83,18 +90,15 @@
                         Eelit felis dolor vitae
 
                     </h4>
-
                           <%
-                            if(session.getAttribute("username") == null){
+                              if(session.getAttribute("username") == null){
 
                           %>
-
-                          <a href="#about" data-toggle="modal" data-target=".bd-example-modal-sm-sign-in" class="btn btn-custom btn-one" >SIGN IN</a>
-                          <a href="#subscribe" data-toggle="modal" data-target=".bd-example-modal-sm-sign-up" class="btn btn-custom btn-two" >SIGN UP</a
+                    <a href="#about" data-toggle="modal" data-target=".bd-example-modal-sm-sign-in" class="btn btn-custom btn-one" >SIGN IN</a>
+                    <a href="#subscribe" data-toggle="modal" data-target=".bd-example-modal-sm-sign-up" class="btn btn-custom btn-two" >SIGN UP</a>
                           <%
                               }
                           %>
-
                 </div>
                 </div>
               
@@ -108,7 +112,6 @@
         <center>
                     <b>Designed by NULL TM </b> <br>
 
-            
                 
         </center>
 
@@ -241,18 +244,18 @@
 
 <div class="modal fade bd-example-modal-sm-sign-in" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
-    <div class="modal-content">
+    <div class="modal-content" id="sgn">
         <center>
           <h2> Sign In</h2><hr>
-               <form action="/login" method="post">
-                <p>
-                <input class="sign_input" placeholder="Login" type="text" name="login" /><br />
-                 </p>
-                 <input class="sign_input" placeholder="Password" type="password" name="password" /><br />
-                 <hr>
-                <input type="submit" class="submit-sign"  name="submit" value="SUBMIT">
+               <form action="/login" method="post" id="lgn">
+                   <p>
+                       <input id="val-login" class="sign_input" placeholder="Login" type="text" name="login" /><br />
+                   </p>
+                   <input id="val-pwd" class="sign_input" placeholder="Password" type="password" name="password" /><br />
+                   <hr>
+                   <input id="val-submit" type="submit" class="submit-sign"  name="submit" value="SUBMIT">
          </form>
-            <center><p style="color:red;">${errorMessage}</p></center>
+            <center><p class="error" style="color:red;">${errorMessage}</p></center>
         </center>
     </div>
   </div>
@@ -266,40 +269,40 @@
         <center>
       <h2> Sign Up</h2><hr>
            <form action="/signup" method="post">
-            <p>
-            <input class="sign_input" placeholder="Name" type="text" name="first_name" required/><br />
-         </p>
-            <p>
-            <input class="sign_input" placeholder="Surname" type="text" name="last_name" required/><br />
-         </p>
-            <p>
-            <input class="sign_input" placeholder="Login" type="text" name="username" required/><br />
-         </p>
-            <p>
-            <input class="sign_input" placeholder="ID" type="text" name="id" required/><br />
-         </p>
-             <p>
-             <input class="sign_input" placeholder="Email" type="text" name = "email" required/><br />
-         </p>
+               <p>
+                   <input class="sign_input" placeholder="Name" type="text" name="first_name" required/><br />
+               </p>
+               <p>
+                   <input class="sign_input" placeholder="Surname" type="text" name="last_name" required/><br />
+               </p>
+               <p>
+                   <input class="sign_input" placeholder="Login" type="text" name="username" required/><br />
+               </p>
+               <p>
+                   <input class="sign_input" placeholder="ID" type="text" name="id" required/><br />
+               </p>
+               <p>
+                   <input class="sign_input" placeholder="Email" type="text" name = "email" required/><br />
+               </p>
                <!--<p>
               <input class="sign_input" placeholder="Login" type="text" name="login" /><br />
           </p>-->
-             <p>
-             <input class="sign_input" placeholder="Password" type="password" name="password" required/><br />
-         </p>
-             <input class="sign_input" placeholder="Confirm Password" type="password" name="conpassword" required/><br />
+               <p>
+                   <input class="sign_input" placeholder="Password" type="password" name="password" required/><br />
+               </p>
+               <input class="sign_input" placeholder="Confirm Password" type="password" name="conpassword" required/><br />
                <hr>
-              <input type="submit" class="submit-sign"  name="submit" value="SUBMIT">
-      </form>
+               <button type="submit" class="submit-sign"  name="submit">SUBMIT</button>
+    </form>
             <center><p style="color:red;">${error}</p></center>
             <center><p style="color:red;">${error1}</p></center>
-          </center>
-      </div>
+        </center>
     </div>
   </div>
+</div>
 
 
-      <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+    <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
     <!-- CORE JQUERY  SCRIPTS -->
     <script src="assets/js/jquery-1.11.1.js"></script>
     <!-- BOOTSTRAP SCRIPTS  -->

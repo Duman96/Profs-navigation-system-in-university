@@ -1,6 +1,7 @@
 package webapp;
 
 import appLayer.User;
+import jdbc.signup;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,15 +18,17 @@ public class login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         User userObject = new User();
+        String loginpwd = request.getParameter("password");
+        String generatedPassword = signup.getString(loginpwd);
 
         request.setAttribute("username", request.getParameter("login"));
-        request.setAttribute("password", request.getParameter("password"));
+        request.setAttribute("password", generatedPassword);
 
 
         if(userObject.isAdmin(request.getParameter("login"), request.getParameter("password"))){
             request.getRequestDispatcher("/admin.jsp").forward(request, response);
         }
-        else if(userObject.isValidUserCredentials(request.getParameter("login"), request.getParameter("password"))){
+        else if(userObject.isValidUserCredentials(request.getParameter("login"), generatedPassword)){
 
             HttpSession session = request.getSession();
             session.setAttribute("username", request.getParameter("login"));

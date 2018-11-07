@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
+import java.security.*;
 
 //@WebServlet(name = "signup")
 public class signup extends HttpServlet {
@@ -52,6 +53,7 @@ public class signup extends HttpServlet {
             st1 = conn.createStatement();
             rs = st.executeQuery(query);
             rs1 = st1.executeQuery(query1);
+            String generatedPassword = getString(password);
 
 
             if(!password.equals(conpassword)){
@@ -64,7 +66,7 @@ public class signup extends HttpServlet {
                         request.setAttribute("error2", "Login already taken");
                         request.getRequestDispatcher("/index.jsp").forward(request, response);
                     }else{
-                    String sql = "insert into users(user_name, user_surname, user_nickname, user_studentid, user_email, user_pwd) values(\"" + firstname + "\", \"" + lastname + "\",\"" + username + "\",\"" + id + "\",\"" + email + "\",\"" + password + "\")";
+                    String sql = "insert into users(user_name, user_surname, user_nickname, user_studentid, user_email, user_pwd) values(\"" + firstname + "\", \"" + lastname + "\",\"" + username + "\",\"" + id + "\",\"" + email + "\",\"" + generatedPassword + "\")";
 
                     System.out.println(sql);
 
@@ -87,6 +89,30 @@ public class signup extends HttpServlet {
         {
             e.printStackTrace();
         }
+    }
+
+    public static String getString(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+
+            md.update(password.getBytes());
+
+            byte[] bytes = md.digest();
+            //This bytes[] has bytes in decimal format;
+            //Convert it to hexadecimal format
+            StringBuilder sb = new StringBuilder();
+            for(int i=0; i< bytes.length ;i++)
+            {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            //Get complete hashed password in hex format
+            password = sb.toString();
+        }
+        catch (NoSuchAlgorithmException e)
+        {
+            e.printStackTrace();
+        }
+        return password;
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
