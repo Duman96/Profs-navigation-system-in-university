@@ -54,46 +54,13 @@
                     <li><a class="nav-bar-a"href="#features">COURSES</a></li>
                     <li><a class="nav-bar-a"href="about_us.jsp">ABOUT US</a></li>
                     <li><a class="nav-bar-user-a" href="profile_s.jsp">PROFILE</a></li>
-                    <li><a class="nav-bar-user-a" href="about.html">LOG OUT</a></li>
+                    <li><a class="nav-bar-user-a" href="logout">LOG OUT</a></li>
                 </ul>
             </div>
 
         </div>
     </div>
-    <!-- NAVBAR SECTION END-->
-   <!--  <div id="home">
-        <div class="overlay">
-            <div class="container">
-                <div class="row scroll-me" >
-                      <div class="col-md-6 ">
-                    <h4>
-                        Consectetur adipiscing elit felis dolor felis dolor vitae.
-                        Eelit felis dolor vitae  adipiscing elit felis dolor felis dolor vitae.
-                        Eelit felis dolor vitae
 
-                    </h4>
-                    <a href="#about" data-toggle="modal" data-target=".bd-example-modal-sm-sign-in" class="btn btn-custom btn-one" >Sign In</a>
-                    <a href="#subscribe" data-toggle="modal" data-target=".bd-example-modal-sm-sign-up" class="btn btn-custom btn-two" >Sign Up</a>
-
-                </div>
-                </div>
-              
-                
-            </div>
-
-        </div>
-
-    </div>
-    <div class="footer">
-        <center>
-                    <b>Designed by NULL TM </b> <br>
-                
-        </center>
-
-    </div>
-
-
-    <!--HOME SECTION END  -->
 <section id="about">
         <div class="container">
 
