@@ -1,0 +1,299 @@
+﻿
+/*=============================================================
+    Authour URL: www.designbootstrap.com
+
+    http://www.designbootstrap.com/
+
+    License: MIT
+
+    http://opensource.org/licenses/MIT
+
+    100% Free To use For Personal And Commercial Use.
+
+    IN EXCHANGE JUST TELL PEOPLE ABOUT THIS WEBSITE
+   
+========================================================  */
+
+/*================================
+    GENERAL STYLES
+==================================*/
+
+@import url(http://fonts.googleapis.com/css?family=Lato); /* FREE GOOGLE FONTS */
+
+body {
+   /*font-family: 'Lato', sans-serif;*/
+   font-family:verdana;
+    line-height: 30px;
+    font-size: 14px;
+
+}
+
+
+section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.pad-bottom {
+    padding-bottom: 70px;
+}
+h4 {
+    color:#16A8C2;
+    font-size: 30px;
+    /*padding-bottom:20px;*/
+}
+h3{
+
+    margin-top:-5px;
+}
+
+.icon-set {
+    padding-bottom:20px;
+    padding-top:20px;
+    font-size:50px;
+}
+/*================================
+    BUTTON STYLES
+==================================*/
+.btn-custom {
+    border-radius:30px;
+-webkit-border-radius:30px;
+-moz-border-radius:30px;
+padding:15px;
+-webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+   color: #fff;
+   margin:5px 5px 5px 0px;
+}
+
+.btn-one {   
+background-color: #16A8C2;
+border:2px solid #16A8C2; 
+width: 25%;       
+  
+}
+ .btn-one:hover {
+  color:#fff;
+ background-color:transparent;
+    }
+
+ .btn-two {   
+background-color:transparent;
+border:2px solid #16A8C2;   
+width: 25%;     
+  
+}
+ .btn-two:hover {
+  color:#fff;
+ background-color:#16A8C2;
+    }
+ .btn-three { 
+     color:#000;  
+background-color:transparent;
+border:2px solid #16A8C2;        
+  
+}
+ .btn-three:hover {
+  color:#fff;
+ background-color:#16A8C2;
+    }
+ 
+
+/*================================
+    HOME STYLES
+==================================*/
+
+#home_admin {
+    background: url(../img/admin_background.jpg) no-repeat center center; /*Full Witdth background image*/
+    padding: 0;
+    -webkit-background-size: cover;
+    background-size: cover;
+    -moz-background-size: cover;
+}
+    #home_admin .overlay {
+        padding-top: 120px;
+   
+        min-height: 400px;
+        height:800px;
+        padding-bottom: 40px;
+    }
+
+        #home_admin h4 {
+        /*margin-top: 120px;*/
+        margin-bottom: 40px;
+        line-height:40px;
+        letter-spacing:2px;
+        font-size:20px;
+    }
+
+
+
+    #home .overlay {
+        padding-top: 120px;
+        background-color: rgba(34, 34, 34, 0.4);
+        min-height: 400px;
+        height:800px;
+        padding-bottom: 40px;
+    }
+
+    #home h4 {
+        /*margin-top: 120px;*/
+        margin-bottom: 40px;
+        line-height:40px;
+        letter-spacing:2px;
+        font-size:20px;
+        color:#fff;
+    }
+
+   
+/*================================
+    FEATURES STYLES
+==================================*/
+#features {
+    background-color:#ECECEC;
+}
+.img-phone {
+    max-height:420px;
+}
+/*================================
+    SUBSCRIBE SECTION STYLES
+==================================*/
+
+    #subscribe h4 {
+        font-size:30px;
+        font-weight:900;
+        line-height:50px;
+    }
+    /*================================
+    SOCIAL SECTION STYLES
+==================================*/
+#social {
+    background-color:#ECECEC;
+    padding-bottom:20px;
+}
+    #social a {
+       color:#16A8C2;
+       padding:10px;
+       
+    }
+        #social a i {
+    font-size:20px;
+    padding:15px;
+        }
+    #social a:hover {
+       color:#000;
+      text-decoration:none;
+    }
+
+    .footer{
+        margin: 0 auto;
+
+    }
+    /*================================
+   CUSTOM STYLES
+==================================*/
+
+.sign_input {
+    min-width: 250px;
+    width: 200px;
+    min-height:40px;
+    color:#000;
+    border: 1px black dashed;
+    background: #fff;
+    border-radius: 5px;
+    text-align: center;}
+
+.search_input{
+    min-width: 300px;
+    width: 250px;
+    min-height:30px;
+    margin-top:10px;
+    color:#000;
+    border: 1px black dashed;
+    background: #fff;
+    border-radius: 5px;
+    text-align: left;}
+
+.msg_input {
+    min-width: 250px;
+    width: 200px;
+    min-height:250px;
+    color:#000;
+    border: 1px black dashed;
+    background: #fff;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.submit-sign{
+    margin-bottom: 10px;
+    border: none;
+    font-size: 17px;
+
+    }
+
+.profile_btn{
+width:65px;
+color:#00000000;
+}
+
+    .profile_btn img{
+    width:40px;
+
+    color:#00000000;
+    margin-left:-15%;
+
+    }
+    
+    .profile_btn:hover{
+    opacity: 1;
+    width:220px;
+    color:#000;
+    }
+     
+.bio_div b{
+    font-size: 25px;
+    font-weight: bold;
+
+    margin-top:-100px;
+    margin: 0;
+    padding: 0;
+}
+    .bio_div p{
+        color:#ccc;
+        margin-top: -10px;
+    }
+
+.nav-bar-a{
+    color:#777;
+}
+    .nav-bar-a:hover{
+        color:#16A8C2;
+    }
+.nav-bar-user-a {
+    color:#777;
+    font-weight: bold;
+    border: none;
+    background: #00000000;
+}
+    .nav-bar-user-a:hover{
+        color:#16A8C2;
+
+    }
+
+.team_img{
+    border-radius: 1000px;
+    height: 300px;
+    width: 300px;
+}
+
+
+
+
+
+
+
+
+

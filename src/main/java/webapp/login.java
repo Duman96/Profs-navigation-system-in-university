@@ -20,6 +20,11 @@ public class login extends HttpServlet {
         User userObject = new User();
         String loginpwd = request.getParameter("password");
         String generatedPassword = signup.getString(loginpwd);
+        String firstname = request.getParameter("first_name");
+        String lastname = request.getParameter("last_name");
+        String id = request.getParameter("id");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
 
         request.setAttribute("username", request.getParameter("login"));
         request.setAttribute("password", generatedPassword);

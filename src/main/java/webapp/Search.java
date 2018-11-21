@@ -70,7 +70,7 @@ public class Search extends HttpServlet {
             out.println("<li><a class=\"nav-bar-a\"href=\"http://localhost:8080/profs.jsp\">PROFESSOR</a></li>\n" +
                     "                <li><a class=\"nav-bar-a\"href=\"#features\">COURSES</a></li>\n" +
                     "                <li><a class=\"nav-bar-a\"href=\"http://localhost:8080/about_us.jsp\">ABOUT US</a></li>\n" +
-                    "                <li><a class=\"nav-bar-user-a\" href=\"http://localhost:8080/profile_s.jsp\">PROFILE</a></li>\n" +
+                    "                <li><a class=\"nav-bar-user-a\" href=\"http://localhost:8080/rest/profile/\">PROFILE</a></li>\n" +
                     "                <li><a class=\"nav-bar-user-a\" href=\"http://localhost:8080/logout\">LOG OUT</a></li>");
             out.println("</ul> </div> </div> </div>");
             out.println("<section id=\"about\">\n" +

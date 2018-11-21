@@ -104,13 +104,6 @@ border:2px solid #16A8C2;
 /*================================
     HOME STYLES
 ==================================*/
-#home {
-    background: url(../img/home.jpg) no-repeat center center; /*Full Witdth background image*/
-    padding: 0;
-    -webkit-background-size: cover;
-    background-size: cover;
-    -moz-background-size: cover;
-}
 
 #home_admin {
     background: url(../img/admin_background.jpg) no-repeat center center; /*Full Witdth background image*/

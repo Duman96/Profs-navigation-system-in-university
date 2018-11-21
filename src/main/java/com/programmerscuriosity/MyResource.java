@@ -6,11 +6,10 @@ import javax.imageio.ImageIO;
 import javax.imageio.ImageReadParam;
 import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.*;
 import javax.ws.rs.client.Entity;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.awt.*;
@@ -36,24 +35,35 @@ public class MyResource {
      * @return String that will be returned as a text/plain response.
      */
 
+    String result_n = null;
+    String result_s = null;
+    String result_school = null;
+    String result_dep = null;
+    String result_pos= null;
+    String result_bio = null;
+    Blob b = null;
+    String comms =  "";
+
+    ResultSet rs = null;
+    ResultSet rs1 = null;
+
+    @Context
+    private HttpServletRequest request;
+
+
+
     @GET
     @Produces(MediaType.TEXT_HTML)
     @Path("{id}")
     public String getIt(@PathParam("id") String id) throws IOException, SQLException {
         MySqlConnect mysqlConnect = new MySqlConnect();
+        String username = request.getSession().getAttribute("username").toString();
         System.out.println("ID is " + id);
         System.out.println("Type of id " + ((Object) id).getClass().getName());
         int foo = Integer.parseInt(id);
         String sql = "select * from professors where ID = " + foo;
-        String result_n = null;
-        String result_s = null;
-        String result_school = null;
-        String result_dep = null;
-        String result_pos= null;
-        String result_bio = null;
-        Blob b = null;
+        String sql1 = "select * from comments where Professor_ID = " + foo;
 
-        ResultSet rs = null;
         try {
 //            PreparedStatement statement = mysqlConnect.connect().prepareStatement(sql);
 //            ResultSet rs = statement.executeQuery();
@@ -74,12 +84,28 @@ public class MyResource {
 
                 //System.out.println("Result is: " + result);
                 b = rs.getBlob(9);
-                //System.out.println("BLOB IS: \n");
+                System.out.println("BLOB IS: \n");
                 //System.out.println(Arrays.toString(blob));
 
                 //photo64 = new String(b.getBytes(1l, (int) b.length()));
 
 
+            }
+
+
+            Statement stmt1 = conn.createStatement();
+            rs1 = stmt1.executeQuery(sql1);
+        //    String comms = "";
+            while (rs1.next()) {
+                comms += "<div style = \"border: 3px dotted black;\"><h5><strong>" + rs1.getString(3) + ": " + "</strong></h5>" + rs1.getString(2) + "</div>" + "\n\n";
+                System.out.println("COMMENTS: " + comms);
+
+                if (username == rs1.getString(3)) {
+                    comms += "<p>\n" +
+                            "<button type=\"submit\" class=\"nav-bar-a\" name=\"submit\">DELETE</button>\n" +
+                            "</p>\n";
+                }
+                System.out.println(rs1.getString(3));
             }
 
         } catch (SQLException e) {
@@ -88,7 +114,6 @@ public class MyResource {
             mysqlConnect.disconnect();
         }
         String imgsrc = "data:image/jpg;base64," + b;
-        String str = "Dana";
         String html = "<!DOCTYPE html>\n" +
                 "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
                 "<head>\n" +
@@ -123,7 +148,7 @@ public class MyResource {
                 "                    <li><a class=\"nav-bar-a\"href=\"http://localhost:8080/profs.jsp\">PROFESSOR</a></li>\n" +
                 "                    <li><a class=\"nav-bar-a\"href=\"#features\">COURSES</a></li>\n" +
                 "                    <li><a class=\"nav-bar-a\"href=\"http://localhost:8080/about_us.jsp\">ABOUT US</a></li>\n" +
-                "                    <li><a class=\"nav-bar-user-a\" href=\"http://localhost:8080/profile_s.jsp\">PROFILE</a></li>\n" +
+                "                    <li><a class=\"nav-bar-user-a\" href=\"http://localhost:8080/rest/profile\">PROFILE</a></li>\n" +
                 "                    <li><a class=\"nav-bar-user-a\" href=\"http://localhost:8080/logout\">LOG OUT</a></li>\n" +
                 "                </ul>\n" +
                 "            </div>\n" +
@@ -149,9 +174,17 @@ public class MyResource {
                                         result_bio +
                 "                    </p>\n" +
                 "                </div>\n" +
+                                "<div class = \"col-md-4\">" +
+                                     "<h4> Feedback </h4>" +
+                                     comms +
+                                "</div>" +
                 "            </div>\n" +
                 "            <br>\n" +
-                "        </div>\n" +
+                "<form action=\"/rest/professors/" + id + "\" method=\"post\" id=\"lgn\">\n" +
+                "                   <input id=\"val-login\" class=\"sign_input\" placeholder=\"Enter comment\" type=\"text\" name=\"comment\" /><br />\n" +
+                "                   <input id=\"val-submit\" type=\"submit\" class=\"submit-sign\"  name=\"submit\" value=\"SUBMIT\">\n" +
+                "         </form>" +
+        "        </div>\n" +
                 "</section>\n" +
                 "    <div class=\"footer\">\n" +
                 "        <center>\n" +
@@ -166,5 +199,21 @@ public class MyResource {
                 "</html>\n";
         return html;
 
+    }
+
+    @POST
+    @Path("{id}")
+    public void createCustomer(@FormParam("comment") String comm, @PathParam("id") String id) throws SQLException {
+        String username = request.getSession().getAttribute("username").toString();
+        MySqlConnect mysqlConnect = new MySqlConnect();
+//
+       ///String sql = "INSERT INTO comments (Comment, From_User, Professor_ID) VALUES (" + comm + ", helo, "+ id + ")";
+       String sql = "insert into comments (Comment, From_User, Professor_ID) values" +
+               "(\"" + comm + "\", \"" + username + "\",\"" + id + "\")";
+
+       Connection conn = mysqlConnect.connect();
+        Statement stmt = conn.createStatement();
+        stmt.executeUpdate(sql);
+        System.out.println(comm);
     }
 }

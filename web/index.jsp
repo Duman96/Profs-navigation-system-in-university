@@ -42,6 +42,35 @@
         </script>
     <![endif]-->
 </head>
+<%
+    if(session.getAttribute("username") != null){
+
+%>
+<style>
+    #home {
+        background: url(http://localhost:8080/assets/img/homelight.jpg) no-repeat center center; /*Full Witdth background image*/
+        padding: 0;
+        -webkit-background-size: cover;
+        background-size: cover;
+        -moz-background-size: cover;
+    }
+</style>
+<%
+    }
+    if(session.getAttribute("username") == null){
+%>
+<style>
+    #home {
+        background: url(http://localhost:8080/assets/img/home.jpg) no-repeat center center; /*Full Witdth background image*/
+        padding: 0;
+        -webkit-background-size: cover;
+        background-size: cover;
+        -moz-background-size: cover;
+    }
+</style>
+<%
+    }
+%>
 <body>
    <div class="navbar navbar-default navbar-fixed-top scroll-me">
         <!-- pass scroll-me class above a tags to starts scrolling -->
@@ -65,7 +94,7 @@
                         if(session.getAttribute("username") != null){
 
                     %>
-                    <li><a class="nav-bar-user-a" href="profile_s.jsp">PROFILE</a></li>
+                    <li><a class="nav-bar-user-a" href="/rest/profile/">PROFILE</a></li>
                     <li><a class="nav-bar-user-a" href="/logout">LOG OUT</a></li>
 
                     <%

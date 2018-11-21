@@ -45,7 +45,7 @@ response.sendRedirect("/index.jsp");
                     <li><a class="nav-bar-a"href="profs.jsp">PROFESSOR</a></li>
                     <li><a class="nav-bar-a"href="#features">COURSES</a></li>
                     <li><a class="nav-bar-a"href="about_us.jsp">ABOUT US</a></li>
-                    <li><a class="nav-bar-user-a" href="profile_s.jsp">PROFILE</a></li>
+                    <li><a class="nav-bar-user-a" href="/rest/profile/">PROFILE</a></li>
                     <li><a class="nav-bar-user-a" href="logout">LOG OUT</a></li>
 
 
