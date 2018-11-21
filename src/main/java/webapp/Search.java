@@ -73,6 +73,25 @@ public class Search extends HttpServlet {
                     "                <li><a class=\"nav-bar-user-a\" href=\"http://localhost:8080/profile_s.jsp\">PROFILE</a></li>\n" +
                     "                <li><a class=\"nav-bar-user-a\" href=\"http://localhost:8080/logout\">LOG OUT</a></li>");
             out.println("</ul> </div> </div> </div>");
+            out.println("<section id=\"about\">\n" +
+                    "    <div class=\"container\">\n" +
+                    "        <div class=\"row scroll-me\">\n" +
+                    "            <center>\n" +
+                    "                <div class=\"col-md-12\">\n" +
+                    "                    <h4>Search Professor</h4>\n" +
+                    "\n" +
+                    "                    <!--<input class=\"search_inputtt\" placeholder=\"  Search...\" type=\"text\" name=\"search\" /></li>-->\n" +
+                    "                    <form class=\"search_inputtt\" action=\"http://localhost:8080/Search\" method=\"post\">\n" +
+                    "                        <p>\n" +
+                    "                            <input class=\"search_input\" placeholder=\" Search...\" type=\"text\" name=\"search\" required/>\n" +
+                    "                            <button type=\"submit\" class=\"nav-bar-a\" name=\"submit\">SUBMIT</button>\n" +
+                    "                        </p>\n" +
+                    "                    </form>\n" +
+                    "                </div>\n" +
+                    "            </center>\n" +
+                    "        </div><br>\n" +
+                    "    </div>\n" +
+                    "</section>\n");
 
             out.println("");
             out.println("");

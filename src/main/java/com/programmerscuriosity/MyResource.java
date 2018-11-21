@@ -36,10 +36,6 @@ public class MyResource {
      * @return String that will be returned as a text/plain response.
      */
 
-
-
-
-
     @GET
     @Produces(MediaType.TEXT_HTML)
     @Path("{id}")
@@ -78,7 +74,7 @@ public class MyResource {
 
                 //System.out.println("Result is: " + result);
                 b = rs.getBlob(9);
-                System.out.println("BLOB IS: \n");
+                //System.out.println("BLOB IS: \n");
                 //System.out.println(Arrays.toString(blob));
 
                 //photo64 = new String(b.getBytes(1l, (int) b.length()));

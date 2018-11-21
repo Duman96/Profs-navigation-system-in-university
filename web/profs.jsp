@@ -97,8 +97,6 @@
  <!--HOME SECTION END  -->
 <section id="about">
     <div class="container">
-
-
         <div class="row scroll-me">
             <center>
                 <div class="col-md-12">
@@ -112,10 +110,8 @@
                         </p>
                     </form>
                 </div>
+            </center>
         </div><br>
-
-
-
     </div>
 </section>
 <!-- ABOUT SECTION END-->
