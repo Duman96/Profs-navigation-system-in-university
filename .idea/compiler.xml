@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="SEProject" />
+        <module name="FinalProj" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="SEProject" target="1.8" />
+      <module name="FinalProj" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
