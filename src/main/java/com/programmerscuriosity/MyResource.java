@@ -1,26 +1,16 @@
 package com.programmerscuriosity;
 
-import org.glassfish.jersey.internal.util.Base64;
-
-import javax.imageio.ImageIO;
-import javax.imageio.ImageReadParam;
-import javax.imageio.ImageReader;
-import javax.imageio.stream.ImageInputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.*;
-import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
-import java.util.Arrays;
-import java.util.Iterator;
+
+import org.jsoup.Jsoup;
+import org.w3c.dom.Document;
+
 
 /**
  * Created by marom on 27/09/16.
@@ -64,6 +54,7 @@ public class MyResource {
         String sql = "select * from professors where ID = " + foo;
         String sql1 = "select * from comments where Professor_ID = " + foo;
 
+
         try {
 //            PreparedStatement statement = mysqlConnect.connect().prepareStatement(sql);
 //            ResultSet rs = statement.executeQuery();
@@ -95,15 +86,17 @@ public class MyResource {
 
             Statement stmt1 = conn.createStatement();
             rs1 = stmt1.executeQuery(sql1);
-        //    String comms = "";
+            //    String comms = "";
             while (rs1.next()) {
-                comms += "<div style = \"border: 3px dotted black;\"><h5><strong>" + rs1.getString(3) + ": " + "</strong></h5>" + rs1.getString(2) + "</div>" + "\n\n";
+                comms += "<div id = \"" + rs1.getString(1) + "\" style = \"border: 3px dotted black;\"><h5><strong>" + rs1.getString(3) + ": " + "</strong></h5>" + rs1.getString(2) + "</div>" + "\n\n";
                 System.out.println("COMMENTS: " + comms);
 
-                if (username == rs1.getString(3)) {
-                    comms += "<p>\n" +
-                            "<button type=\"submit\" class=\"nav-bar-a\" name=\"submit\">DELETE</button>\n" +
-                            "</p>\n";
+
+                if (username.equals(rs1.getString(3))) {
+                    comms += "<form action=\"/DeleteComment\" method=\"post\" id=\"lgn\" >" +
+                            "<input hidden id=\"di\" class=\"sign_input\" placeholder=\"Enter comment\" type=\"text\" name=\"val-comm\" value = " + rs1.getString(1) + "/>" +
+                            "<input id=\"val-submit\" type=\"submit\" class=\"submit-sign\"  name=\"delete\" value=\"DELETE\">" +
+                            "</form>";
                 }
                 System.out.println(rs1.getString(3));
             }
@@ -131,6 +124,14 @@ public class MyResource {
                 "        <script src=\"https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js\"></script>\n" +
                 "        <script src=\"https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js\"></script>\n" +
                 "</head>\n" +
+                "<body>" +
+                "<%\n" +
+                "\n" +
+                "    if(session.getAttribute(\"username\") == null){\n" +
+                "        response.sendRedirect(\"/index.jsp\");\n" +
+                "    }\n" +
+                "\n" +
+                "%>"+
                 "   <div class=\"navbar navbar-default navbar-fixed-top scroll-me\">\n" +
                 "        <div class=\"container\">\n" +
                 "            <div class=\"navbar-header\">\n" +
@@ -200,20 +201,25 @@ public class MyResource {
         return html;
 
     }
+    @Context
+    private HttpServletResponse response;
 
     @POST
     @Path("{id}")
-    public void createCustomer(@FormParam("comment") String comm, @PathParam("id") String id) throws SQLException {
+
+    public void createCustomer(@FormParam("comment") String comm, @PathParam("id") String id) throws SQLException, IOException {
         String username = request.getSession().getAttribute("username").toString();
         MySqlConnect mysqlConnect = new MySqlConnect();
 //
-       ///String sql = "INSERT INTO comments (Comment, From_User, Professor_ID) VALUES (" + comm + ", helo, "+ id + ")";
-       String sql = "insert into comments (Comment, From_User, Professor_ID) values" +
+        ///String sql = "INSERT INTO comments (Comment, From_User, Professor_ID) VALUES (" + comm + ", helo, "+ id + ")";
+        String sql = "insert into comments (Comment, From_User, Professor_ID) values" +
                "(\"" + comm + "\", \"" + username + "\",\"" + id + "\")";
 
-       Connection conn = mysqlConnect.connect();
+        Connection conn = mysqlConnect.connect();
         Statement stmt = conn.createStatement();
         stmt.executeUpdate(sql);
         System.out.println(comm);
+        response.sendRedirect(request.getHeader("Referer"));
     }
+
 }

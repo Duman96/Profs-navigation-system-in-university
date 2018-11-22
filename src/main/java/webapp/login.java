@@ -38,6 +38,7 @@ public class login extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("username", request.getParameter("login"));
             request.getRequestDispatcher("/index.jsp").forward(request, response);
+            System.out.println(request.getHeader("login"));
         }else{
             request.setAttribute("errorMessage", "Invalid login or password. Try again");
             request.getRequestDispatcher("/index.jsp").forward(request, response);

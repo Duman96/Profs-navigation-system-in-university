@@ -37,7 +37,7 @@ public class signup extends HttpServlet {
             ResultSet rs, rs1;
             Statement st, st1;
 
-
+            
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://10.10.3.14:3306/nullteam","nullteam", "helloworld2");
 
