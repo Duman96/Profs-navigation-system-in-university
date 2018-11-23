@@ -48,9 +48,6 @@ public class MyResource {
     public String getIt(@PathParam("id") String id) throws IOException, SQLException {
 
         String username = null;
-        if(request.getSession().getAttribute("username") == null){
-            return "Access denied";
-        }
             MySqlConnect mysqlConnect = new MySqlConnect();
 
         if (request.getSession().getAttribute("admin") == null) {
