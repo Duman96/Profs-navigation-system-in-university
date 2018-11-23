@@ -25,6 +25,11 @@
           <element id="library" level="project" name="Maven: org.glassfish.jersey.media:jersey-media-jaxb:2.23.2" />
           <element id="library" level="project" name="Maven: javax.validation:validation-api:1.1.0.Final" />
           <element id="library" level="project" name="Maven: javax.ws.rs:javax.ws.rs-api:2.0.1" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../gson-2.8.5.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../javax.json-1.0.2.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../jsoup-1.11.3.jar" />
+          <element id="library" level="project" name="Maven: org.glassfish:javax.json:1.0.2" />
+          <element id="library" level="project" name="Maven: org.jsoup:jsoup:1.10.2" />
         </element>
       </element>
       <element id="library" level="project" name="mysql-connector-java-8.0.13" />

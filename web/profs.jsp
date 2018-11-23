@@ -21,6 +21,7 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
 </head>
 <body>
 <%
@@ -61,152 +62,27 @@
 
     </div>
 </div>
-<!-- NAVBAR SECTION END-->
-<!--  <div id="home">
-     <div class="overlay">
-         <div class="container">
-             <div class="row scroll-me" >
-                   <div class="col-md-6 ">
-                 <h4>
-                     Consectetur adipiscing elit felis dolor felis dolor vitae.
-                     Eelit felis dolor vitae  adipiscing elit felis dolor felis dolor vitae.
-                     Eelit felis dolor vitae
 
-                 </h4>
-                 <a href="#about" data-toggle="modal" data-target=".bd-example-modal-sm-sign-in" class="btn btn-custom btn-one" >Sign In</a>
-                 <a href="#subscribe" data-toggle="modal" data-target=".bd-example-modal-sm-sign-up" class="btn btn-custom btn-two" >Sign Up</a>
-
-             </div>
-             </div>
-
-
-         </div>
-
-     </div>
-
- </div>
- <div class="footer">
-     <center>
-                 <b>Designed by NULL TM </b> <br>
-
-     </center>
-
- </div>
-
-
- <!--HOME SECTION END  -->
 <section id="about">
     <div class="container">
         <div class="row scroll-me">
             <center>
                 <div class="col-md-12">
                     <h4>Search Professor</h4>
-
+                    <div class="box">
+                        <div class="container-4">
                     <!--<input class="search_inputtt" placeholder="  Search..." type="text" name="search" /></li>-->
-                    <form class="search_inputtt" action="/Search" method="post">
-                        <p>
-                            <input class="search_input" placeholder=" Search..." type="text" name="search" required/>
-                            <button type="submit" class="nav-bar-a" name="submit">SUBMIT</button>
-                        </p>
-                    </form>
+                            <form action="/Search" method="post">
+                                <input id = "search" placeholder=" Search..." type="search" name="search" required/>
+                                <button type="submit" class="icon" name="submit">SUBMIT</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </center>
         </div><br>
     </div>
 </section>
-<!-- ABOUT SECTION END-->
-<!-- <section id="features">
-     <div class="container">
-
-         <div class="row text-center">
-             <div class="col-md-6">
-                 <div class="row pad-bottom">
-                      <div class="col-md-4">
-                 <i class="ion-ios-star-outline icon-set"></i>
-                 <h4>Free to download </h4>
-                                     Consectetur adipiscing elit felis dolor .
-
-             </div>
-             <div class="col-md-4">
-                 <i class="ion-ios-chatboxes-outline icon-set"></i>
-                 <h4>Stable relaese  </h4>
-                                   Consectetur adipiscing elit felis dolor .
-
-             </div>
-             <div class="col-md-4">
-                 <i class="ion-ios-cloud-upload-outline icon-set"></i>
-                 <h4>No strings attached </h4>
-                 Consectetur adipiscing elit felis dolor .
-             </div>
-                     </div>
-                     <div class="row">
-                      <div class="col-md-4">
-                 <i class="ion-ios-pricetags-outline icon-set"></i>
-                 <h4>Free to download </h4>
-                                     Consectetur adipiscing elit felis dolor .
-
-             </div>
-             <div class="col-md-4">
-                 <i class="ion-ios-speedometer-outline icon-set"></i>
-                 <h4>Stable relaese  </h4>
-                                   Consectetur adipiscing elit felis dolor .
-
-             </div>
-             <div class="col-md-4">
-                 <i class="ion-ios-crop icon-set"></i>
-                 <h4>No strings attached </h4>
-                 Consectetur adipiscing elit felis dolor .
-             </div>
-                 </div>
-         </div>
-             <div class="col-md-6 text-center">
-                 <img src="assets/img/phone.png" class="img-phone" />
-             </div>
-     </div>
-</div>
-
- </section>
- <!-- FEATURES SECTION END-->
-<!--<section id="subscribe">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-md-8 col-md-offset-2 ">
-               <h4>We are happy to say that we have 30,000+ subscribers, so don't wait subscribe us now </h4>
-                 <a href="#" class="btn btn-custom btn-three" > Subscribe & Send Download Link</a>
-            </div>
-        </div>
-
-    </div>
-</section>
- <!-- SUBSCRIBE SECTION END-->
-<!-- <section id="social">
-    <div class="container">
-           <div class="row text-center pad-bottom">
-            <div class="col-md-8 col-md-offset-2 ">
-              <a href="#" class="btn btn-custom btn-three" ><i class="ion-social-facebook-outline "></i></a>
-               <a href="#" class="btn btn-custom btn-three" ><i class="ion-social-googleplus-outline "></i> </a>
-                <a href="#" class="btn btn-custom btn-three" ><i class="ion-social-tumblr-outline "></i></a>
-            </div>
-        </div>
-        <div class="row text-center">
-            <div class="col-md-8 col-md-offset-2 ">
-            <a href="#">Privacy Policy</a>
-
-                 <a href="#">Terms of Use</a>
-            </div>
-        </div>
-        <div class="row text-center" >
-              <div class="col-md-8 col-md-offset-2 ">
-               <a href="http://www.designbootstrap.com/" target="_blank"> by  DesignBootstrap</a>
-                  </div>
-        </div>
-
-    </div>
-
-
-</section>
-<!-- SOCIAL SECTION END-->
-
 
 <div class="footer">
     <center>

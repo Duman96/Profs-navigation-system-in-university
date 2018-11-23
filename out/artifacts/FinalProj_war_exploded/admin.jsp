@@ -207,11 +207,7 @@ body{
 
 <%
 
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-    response.setHeader("Pragma", "no-cache");
-    response.setDateHeader("Expires", 0);
-
-    if(session.getAttribute("username") == null){
+    if(session.getAttribute("admin") == null){
         response.sendRedirect("/index.jsp");
     }
 
@@ -237,7 +233,7 @@ body{
                                     <figcaption class="slide-caption">
 
                                         <h2> Welcome Master</h2><hr>
-                                                       <form action="reg.php" method="post">
+                                                       <form action="/Admin" method="post">
                                                         <p>
                                                         <input class="sign_input" placeholder="Login" type="text" name="login" /><br />
                                                          </p>
@@ -245,7 +241,7 @@ body{
                                                          <hr>
                                                         <input type="submit" style="opacity:0" name="submit" value="SUBMIT">
                                                  </form>
-
+                                        <center><p class="error" style="color:red;">${errorMessage}</p></center>
                                     </figcaption>
                                   </figure><!-- .slide-figure -->
                                 </div><!-- .slide -->

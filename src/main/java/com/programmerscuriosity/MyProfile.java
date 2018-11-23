@@ -18,6 +18,10 @@ public class MyProfile {
     //@Path("{id}")
     public String getUser () throws IOException, SQLException, ServletException {
 
+        if(request.getSession().getAttribute("username") == null){
+            return "Access denied";
+        }
+
         MySqlConnect mysqlConnect = new MySqlConnect();
         //System.out.println("ID is " + id);
         //System.out.println("Type of id " + ((Object) id).getClass().getName());
@@ -27,6 +31,7 @@ public class MyProfile {
         String username = null;
         String email = null;
         String sid = null;
+        String img = null;
         username = request.getSession().getAttribute("username").toString();
 
         String sql = "SELECT * FROM users WHERE user_nickname = \"" + username + "\"";
@@ -54,6 +59,7 @@ public class MyProfile {
                 surname = rs.getString(3);
                 email = rs.getString(5);
                 sid = rs.getString(6);
+                img = rs.getString(8);
                 System.out.println(name + " " + surname);
                 System.out.println("Username is "+ username);
 
@@ -96,17 +102,6 @@ public class MyProfile {
                 "</head>\n" +
                 "<body>\n" +
                 "\n" +
-                "<%\n" +
-                "\n" +
-                "    response.setHeader(\"Cache-Control\", \"no-cache, no-store, must-revalidate\");\n" +
-                "    response.setHeader(\"Pragma\", \"no-cache\");\n" +
-                "    response.setDateHeader(\"Expires\", 0);\n" +
-                "\n" +
-                "    if(session.getAttribute(\"username\") == null){\n" +
-                "        response.sendRedirect(\"/index.jsp\");\n" +
-                "    }\n" +
-                "\n" +
-                "%>\n" +
                 "   <div class=\"navbar navbar-default navbar-fixed-top scroll-me\">\n" +
                 "        <!-- pass scroll-me class above a tags to starts scrolling -->\n" +
                 "        <div class=\"container\">\n" +
@@ -141,21 +136,19 @@ public class MyProfile {
                 "                <div class=\"col-md-4\">\n" +
                 "                    <h4>"+ name + " " + surname + "</h4>\n" +
                 "                    <h5>NU Student</h5>\n" +
-                "                  <img style=\"border:3px solid #16A8C2;margin-top:5px;margin-bottom:5px;\"src=\"http://localhost:8080/assets/img/change2.jpg\" class=\"team_img\">\n" +
+                "                  <img style=\"border:3px solid #16A8C2;margin-top:5px;margin-bottom:5px;\"src=" + img + " class=\"team_img\">\n" +
                 "                   \n" +
                 "                   <h5>School of Science and Technology</h5>\n" +
                 "                    <h5>ID:" + sid + "</h5>\n" +
                 "                    <div style=\"margin-left:-20px;\"class=\"col-md-10 col-10 col-lg-10 col-xl-10\"> \n" +
-                "                        <a href=\"#subscribe\" data-toggle=\"modal\" data-target=\".bd-example-modal-sm-msg\"  class=\"btn btn-custom btn-two profile_btn\"><b class=\"avatar_type_1\"><img src=\"http://localhost:8080/assets/img/avatar.png\">Change Avatar</b></a>\n" +
-                "                     \n" +
+                "                    <a href=\"#subscribe\" data-toggle=\"modal\" data-target=\".bd-example-modal-sm-msg\"  class=\"btn btn-custom btn-two profile_btn\"><b class=\"avatar_type_1\"><img src=\"http://localhost:8080/assets/img/avatar.png\">Change Avatar</b></a>    "+
+                "                        </form>\n" +
                 "                        <!--<a href=\"#subscribe\" data-toggle=\"modal\" data-target=\".bd-example-modal-sm-msg\"  class=\"btn btn-custom btn-two profile_btn\"><b class=\"avatar_type_1\"><img src=\"http://localhost:8080/assets/img/avatar.png\">Change Avatar</b></a>-->\n" +
                 "                    </div>\n" +
                 "                </div>\n" +
                 "                <div class=\"col-md-4 bio_div\">\n" +
                 "                    <h4>Bio</h4>\n" +
                 "                        <br>\n" +
-                "                        <b> 3rd Grade </b>\n" +
-                "                        <p> Grade </p>\n" +
                 "                        <b> Astana </b>\n" +
                 "                        <p> Hometown </p>\n" +
                 "                        <b>" + sid + "</b>\n" +
@@ -174,13 +167,13 @@ public class MyProfile {
                 "                <li>CSCI 152 – Data Stuctures</li>\n" +
                 "                <li>CSCI 245 – System Analysis and Design.</li>\n" +
                 "                <li>CSCI 262 – Software Project Management.</li>\n" +
-                "                <li>CSCI 330, Mobile Computing</li>\n" +
-                "                <li>CSCI 336, Ubiquity and Sensing</li>\n" +
-                "                <li>CSCI 344, Data Mining and Decision Support</li> \n" +
-                "                <li>CSCI 361, Software Engineering</li>\n" +
-                "                <li>CSCI 455, Scripting Languages</li>\n" +
-                "                <li>CSCI 512, Information Theory</li>\n" +
-                "                <li>CSCI 545, Big Data Analytics</li>\n" +
+                "                <li>CSCI 330 - Mobile Computing</li>\n" +
+                "                <li>CSCI 336 - Ubiquity and Sensing</li>\n" +
+                "                <li>CSCI 344 - Data Mining and Decision Support</li> \n" +
+                "                <li>CSCI 361 - Software Engineering</li>\n" +
+                "                <li>CSCI 455 - Scripting Languages</li>\n" +
+                "                <li>CSCI 512 - Information Theory</li>\n" +
+                "                <li>CSCI 545 - Big Data Analytics</li>\n" +
                 "             </ul>\n" +
                 "                </div>\n" +
                 "            </div><br>\n" +

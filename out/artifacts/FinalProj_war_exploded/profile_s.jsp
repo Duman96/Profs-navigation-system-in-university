@@ -21,20 +21,24 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script>
+    function performAjaxSubmit() {
+    var sampleFile = document.getElementById("file").files[0];
+    var formdata = new FormData();
+    formdata.append("sampleFile", sampleFile);
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://127.0.0.1:8080/Prova/Upload", true);
+    xhr.send(formdata);
+    xhr.onload = function(e) {
+    if (this.status == 200) {
+    alert(this.responseText);
+    }
+    };
+    }
+    </script>
 </head>
 <body>
 
-<%
-
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-    response.setHeader("Pragma", "no-cache");
-    response.setDateHeader("Expires", 0);
-
-    if(session.getAttribute("username") == null){
-        response.sendRedirect("/index.jsp");
-    }
-
-%>
    <div class="navbar navbar-default navbar-fixed-top scroll-me">
         <!-- pass scroll-me class above a tags to starts scrolling -->
         <div class="container">
@@ -74,7 +78,10 @@
                    <h5>School of Science and Technology</h5>
                     <h5>ID: 201490584</h5>
                     <div style="margin-left:-20px;"class="col-md-10 col-10 col-lg-10 col-xl-10"> 
-                        <a href="#subscribe" data-toggle="modal" data-target=".bd-example-modal-sm-msg"  class="btn btn-custom btn-two profile_btn"><b class="avatar_type_1"><img src="assets/img/avatar.png">Change Avatar</b></a>
+                        <form href="#subscribe" data-toggle="modal" data-target=".bd-example-modal-sm-msg"  class="btn btn-custom btn-two profile_btn">
+                            <input type="file" id="file">
+                            <input class="avatar_type_1" type = "image" src="assets/img/avatar.png" onclick = "javaScript: performAjaxSubmit ()" value="Change Avatar" alt="submit">
+                        </form>
                      
                         <!--<a href="#subscribe" data-toggle="modal" data-target=".bd-example-modal-sm-msg"  class="btn btn-custom btn-two profile_btn"><b class="avatar_type_1"><img src="assets/img/avatar.png">Change Avatar</b></a>-->
                     </div>

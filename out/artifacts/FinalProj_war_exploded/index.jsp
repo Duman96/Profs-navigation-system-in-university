@@ -41,6 +41,7 @@
         }
         </script>
     <![endif]-->
+        <script src='https://www.google.com/recaptcha/api.js?explicit&hl=en'></script>
 </head>
 <%
     if(session.getAttribute("username") != null){
@@ -147,7 +148,7 @@
     </div>
 
 <div class="modal fade bd-example-modal-sm-sign-in" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog modal-sm" style="width: 500px">
     <div class="modal-content" id="sgn">
         <center>
           <h2> Sign In</h2><hr>
@@ -157,6 +158,8 @@
                    </p>
                    <input id="val-pwd" class="sign_input" placeholder="Password" type="password" name="password" /><br />
                    <hr>
+                   <div class="g-recaptcha" data-sitekey="6LceeXwUAAAAAJr-Wb0dEji-5lkPNJLxfZ1ixbDK"></div>
+                   <br/>
                    <input id="val-submit" type="submit" class="submit-sign"  name="submit" value="SUBMIT">
          </form>
             <center><p class="error" style="color:red;">${errorMessage}</p></center>
@@ -168,7 +171,7 @@
     <!-- MODAL SING-UP-->
 
 <div class="modal fade bd-example-modal-sm-sign-up" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog modal-sm" style="width: 500px">
     <div class="modal-content">
         <center>
       <h2> Sign Up</h2><hr>
@@ -196,6 +199,8 @@
                </p>
                <input class="sign_input" placeholder="Confirm Password" type="password" name="conpassword" required/><br />
                <hr>
+               <div class="g-recaptcha" data-sitekey="6LceeXwUAAAAAJr-Wb0dEji-5lkPNJLxfZ1ixbDK"></div>
+               <br/>
                <button type="submit" class="submit-sign"  name="submit">SUBMIT</button>
     </form>
             <center><p style="color:red;">${error}</p></center>

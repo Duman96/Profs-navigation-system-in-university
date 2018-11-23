@@ -1,5 +1,7 @@
 package jdbc;
 
+import webapp.VerifyRecaptcha;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,13 +33,18 @@ public class signup extends HttpServlet {
             String password = request.getParameter("password");
             String conpassword = request.getParameter("conpassword");
 
+            String gRecaptchaResponse = request
+                    .getParameter("g-recaptcha-response");
+            System.out.println(gRecaptchaResponse);
+            boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
+
             /*if(firstname.isEmpty() || lastname.isEmpty() || username.isEmpty() || id.isEmpty() || email.isEmpty() || password.isEmpty()){
 
             }*/
             ResultSet rs, rs1;
             Statement st, st1;
 
-            
+
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://10.10.3.14:3306/nullteam","nullteam", "helloworld2");
 
@@ -59,17 +66,23 @@ public class signup extends HttpServlet {
                     if(rs1.next()){
                         request.setAttribute("error2", "Login already taken");
                         request.getRequestDispatcher("/index.jsp").forward(request, response);
-                    }else{
-                    String sql = "insert into users(user_name, user_surname, user_nickname, user_studentid, user_email, user_pwd) values(\"" + firstname + "\", \"" + lastname + "\",\"" + username + "\",\"" + id + "\",\"" + email + "\",\"" + generatedPassword + "\")";
+                    }else {
 
-                    System.out.println(sql);
+                        if(verify) {
+                            String sql = "insert into users(user_name, user_surname, user_nickname, user_studentid, user_email, user_pwd) values(\"" + firstname + "\", \"" + lastname + "\",\"" + username + "\",\"" + id + "\",\"" + email + "\",\"" + generatedPassword + "\")";
 
-                    PreparedStatement ps = conn.prepareStatement(sql);
-                    ps.executeUpdate();
-                    //PrintWriter out = response.getWriter();
-                    //out.println("Success yeah");
-                    request.getRequestDispatcher("/index.jsp").forward(request, response);
-                }
+                            System.out.println(sql);
+
+                            PreparedStatement ps = conn.prepareStatement(sql);
+                            ps.executeUpdate();
+                            //PrintWriter out = response.getWriter();
+                            //out.println("Success yeah");
+                            request.getRequestDispatcher("/index.jsp").forward(request, response);
+                        } else {
+                            request.setAttribute("errorMessage", "You missed the captcha. Try again");
+                            request.getRequestDispatcher("/index.jsp").forward(request, response);
+                        }
+                    }
                 }else{
                     request.setAttribute("error1", "You must be a NU student to access this site");
                     request.getRequestDispatcher("/index.jsp").forward(request, response);

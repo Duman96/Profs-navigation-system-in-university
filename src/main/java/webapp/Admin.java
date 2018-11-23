@@ -23,11 +23,11 @@ public class Admin extends HttpServlet {
         if(userObject.isValidAdminCredentials(request.getParameter("login"), request.getParameter("password"))){
 
             HttpSession session = request.getSession();
-            session.setAttribute("username", request.getParameter("login"));
-            request.getRequestDispatcher("/index.jsp").forward(request, response);
+            session.setAttribute("admin", request.getParameter("login"));
+            request.getRequestDispatcher("/admin_page.jsp").forward(request, response);
         }else{
             request.setAttribute("errorMessage", "Invalid login or password. Try again");
-            request.getRequestDispatcher("/index.jsp").forward(request, response);
+            request.getRequestDispatcher("/admin.jsp").forward(request, response);
         }
 
     }

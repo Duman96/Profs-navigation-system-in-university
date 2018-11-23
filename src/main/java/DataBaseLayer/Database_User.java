@@ -77,13 +77,7 @@ public class Database_User {
 
             System.out.println("Connecting....");
 
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/seproj"+
-                    "?verifyServerCertificate=false"+
-                    "&useSSL=false"+
-                    "&requireSSL=false"+
-                    "&useLegacyDatetimeCode=false"+
-                    "&amp"+
-                    "&serverTimezone=UTC", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://10.10.3.14:3306/nullteam", "nullteam", "helloworld2");
             st = conn.createStatement();
 
             sql = "SELECT * FROM admins WHERE admin_nickname = \""+ username + "\" AND admin_pwd = \"" + pwd + "\"";

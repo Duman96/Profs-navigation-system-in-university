@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.*;
 
+
 //@WebServlet(name = "login")
 public class login extends HttpServlet {
 
@@ -28,20 +29,36 @@ public class login extends HttpServlet {
 
         request.setAttribute("username", request.getParameter("login"));
         request.setAttribute("password", generatedPassword);
+        String gRecaptchaResponse = request
+                .getParameter("g-recaptcha-response");
+        System.out.println(gRecaptchaResponse);
+        boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
 
 
-        if(userObject.isAdmin(request.getParameter("login"), request.getParameter("password"))){
+        if(userObject.isAdmin(request.getParameter("login"), request.getParameter("password")) && verify){
+            HttpSession session = request.getSession();
+            session.setAttribute("admin", request.getParameter("login"));
             request.getRequestDispatcher("/admin.jsp").forward(request, response);
         }
-        else if(userObject.isValidUserCredentials(request.getParameter("login"), generatedPassword)){
+        else if(userObject.isValidUserCredentials(request.getParameter("login"), generatedPassword) && verify){
 
             HttpSession session = request.getSession();
+            session.removeAttribute("admin");
+            session.setAttribute("admin", null);
             session.setAttribute("username", request.getParameter("login"));
             request.getRequestDispatcher("/index.jsp").forward(request, response);
-            System.out.println(request.getHeader("login"));
         }else{
-            request.setAttribute("errorMessage", "Invalid login or password. Try again");
-            request.getRequestDispatcher("/index.jsp").forward(request, response);
+            PrintWriter out = response.getWriter();
+            if (verify) {
+                //out.println("<font color=red>Either user name or password is wrong.</font>");
+                request.setAttribute("errorMessage", "Invalid login or password. Try again");
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
+            } else {
+                //out.println("<font color=red>You missed the Captcha.</font>");
+                request.setAttribute("errorMessage", "You missed the captcha. Try again");
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
+            }
+
         }
 
     }
