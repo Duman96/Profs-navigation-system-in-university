@@ -132,11 +132,11 @@ public class Search extends HttpServlet {
                     "            <div class=\"navbar-collapse collapse\">\n" +
                     "                <ul class=\"nav navbar-nav navbar-right\">\n" +
                     "\n" +
-                    "                    <li><a class=\"nav-bar-a\"href=\"profs.html\">PROFESSOR</a></li>\n" +
+                    "                    <li><a class=\"nav-bar-a\"href=\"profs.jsp\">PROFESSOR</a></li>\n" +
                     "                    <li><a class=\"nav-bar-a\"href=\"#features\">COURSES</a></li>\n" +
-                    "                    <li><a class=\"nav-bar-a\"href=\"about_us.html\">ABOUT US</a></li>\n" +
+                    "                    <li><a class=\"nav-bar-a\"href=\"about_us.jsp\">ABOUT US</a></li>\n" +
                     "                    <li><a class=\"nav-bar-user-a\" href=\"profile_s.html\">PROFILE</a></li>\n" +
-                    "                    <li><a class=\"nav-bar-user-a\" href=\"about.html\">LOG OUT</a></li>\n" +
+                    "                    <li><a class=\"nav-bar-user-a\" href=\"logout\">LOG OUT</a></li>\n" +
                     "                </ul>\n" +
                     "            </div>\n" +
                     "\n" +
@@ -148,11 +148,13 @@ public class Search extends HttpServlet {
                     "    <div class=\"row scroll-me\">\n" +
                     "        <div class=\"col-md-12\">\n" +
                     "            <center>\n" +
-                    "            <h4>Search Proffessor</h4>\n" +
+                    "            <h4>Search Professor</h4>\n" +
                     "            <div class=\"box\">\n" +
                     "              <div class=\"container-4\">\n" +
+                    "               <form action=\"/Search\" method=\"post\">"+
                     "                <input type=\"search\" id=\"search\" placeholder=\"Search...\" />\n" +
                     "                <button class=\"icon\">Search</button>\n" +
+                    "               </form>"+
                     "              </div>\n" +
                     "            </div>" +
                     "    </div>\n" +

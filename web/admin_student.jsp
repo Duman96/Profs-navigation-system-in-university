@@ -65,7 +65,7 @@
 					<div class="row wrap-post"><!--Start Box-->
 						<div class="entry-header">
 
-							<h1 class="entry-title">TITLE (DYNAMIC PROFESSOR PAGE) Тут можно выводить лист профов</h1>
+							<h1 class="entry-title">Search for professor</h1>
 						</div>		
 
 				<div class="col-md-4">

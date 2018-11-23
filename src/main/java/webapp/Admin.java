@@ -24,7 +24,7 @@ public class Admin extends HttpServlet {
 
             HttpSession session = request.getSession();
             session.setAttribute("admin", request.getParameter("login"));
-            request.getRequestDispatcher("/admin_page.jsp").forward(request, response);
+            request.getRequestDispatcher("/adminIndex.jsp").forward(request, response);
         }else{
             request.setAttribute("errorMessage", "Invalid login or password. Try again");
             request.getRequestDispatcher("/admin.jsp").forward(request, response);

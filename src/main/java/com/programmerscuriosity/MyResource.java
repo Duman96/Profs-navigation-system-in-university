@@ -47,11 +47,17 @@ public class MyResource {
     @Path("{id}")
     public String getIt(@PathParam("id") String id) throws IOException, SQLException {
 
+        String username = null;
         if(request.getSession().getAttribute("username") == null){
             return "Access denied";
         }
             MySqlConnect mysqlConnect = new MySqlConnect();
-            String username = request.getSession().getAttribute("username").toString();
+
+        if (request.getSession().getAttribute("admin") == null) {
+             username = request.getSession().getAttribute("username").toString();
+        } else {
+             username = "nullmaster";
+        }
             System.out.println("ID is " + id);
             System.out.println("Type of id " + ((Object) id).getClass().getName());
             int foo = Integer.parseInt(id);
@@ -114,7 +120,12 @@ public class MyResource {
                     if (username.equals(rs1.getString(3))) {
                         comms += "<form action=\"/DeleteComment\" method=\"post\" id=\"lgn\" >" +
                                 "<input hidden id=\"di\" class=\"sign_input\" placeholder=\"Enter comment\" type=\"text\" name=\"val-comm\" value = " + rs1.getString(1) + "/>" +
-                                "<input id=\"val-submit\" type=\"submit\" class=\"submit-sign\"  name=\"delete\" value=\"DELETE\">" +
+                                "<input type=\"submit\" class=\"delete-btn-comment\"  style=\"background: url(http://localhost:8080/assets/img/delete.png);background-repeat: no-repeat;background-position: center; background-size: 20px 20px; \" value=\"\">" +
+                                "</form>";
+                    } else if (request.getSession().getAttribute("admin") != null) {
+                        comms += "<form action=\"/DeleteComment\" method=\"post\" id=\"lgn\" >" +
+                                "<input hidden id=\"di\" class=\"sign_input\" placeholder=\"Enter comment\" type=\"text\" name=\"val-comm\" value = " + rs1.getString(1) + "/>" +
+                                "<input type=\"submit\" class=\"delete-btn-comment\"  style=\"background: url(http://localhost:8080/assets/img/delete.png);background-repeat: no-repeat;background-position: center; background-size: 20px 20px; \" value=\"\">" +
                                 "</form>";
                     }
                     System.out.println(rs1.getString(3));
@@ -234,7 +245,12 @@ public class MyResource {
     @Path("{id}")
 
     public void createCustomer(@FormParam("comment") String comm, @PathParam("id") String id) throws SQLException, IOException {
-        String username = request.getSession().getAttribute("username").toString();
+        String username;
+        if(request.getSession().getAttribute("username") != null) {
+             username = request.getSession().getAttribute("username").toString();
+        } else {
+            username = "nullmaster";
+        }
         MySqlConnect mysqlConnect = new MySqlConnect();
 //
         ///String sql = "INSERT INTO comments (Comment, From_User, Professor_ID) VALUES (" + comm + ", helo, "+ id + ")";

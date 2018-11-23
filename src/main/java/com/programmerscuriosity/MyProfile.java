@@ -60,6 +60,9 @@ public class MyProfile {
                 email = rs.getString(5);
                 sid = rs.getString(6);
                 img = rs.getString(8);
+                if(img == null){
+                    img = "http://localhost:8080/assets/img/change2.jpg";
+                }
                 System.out.println(name + " " + surname);
                 System.out.println("Username is "+ username);
 

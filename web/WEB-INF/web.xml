@@ -48,21 +48,102 @@
         <servlet-name>Search</servlet-name>
         <servlet-class>webapp.Search</servlet-class>
     </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>Search</servlet-name>
-        <url-pattern>/Search</url-pattern>
-    </servlet-mapping>
 
     <servlet>
         <servlet-name>DeleteComment</servlet-name>
         <servlet-class>webapp.DeleteComment</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>DeleteUser</servlet-name>
+        <servlet-class>adminka.DeleteUser</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>SearchUser</servlet-name>
+        <servlet-class>adminka.SearchUser</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>SearchProfessor</servlet-name>
+        <servlet-class>adminka.SearchProfessor</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>DeleteProfessor</servlet-name>
+        <servlet-class>adminka.DeleteProfessor</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>AddProfessor</servlet-name>
+        <servlet-class>adminka.AddProfessor</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>UpdateProfessorFinal</servlet-name>
+        <servlet-class>adminka.UpdateProfessorFinal</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>UpdateProfessor</servlet-name>
+        <servlet-class>adminka.UpdateProfessor</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>SearchHandler</servlet-name>
+        <servlet-class>adminka.SearchHandler</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>DeleteComment</servlet-name>
         <url-pattern>/DeleteComment</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>SearchHandler</servlet-name>
+        <url-pattern>/SearchHandler</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>DeleteUser</servlet-name>
+        <url-pattern>/DeleteUser</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>Search</servlet-name>
+        <url-pattern>/Search</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>SearchUser</servlet-name>
+        <url-pattern>/SearchUser</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>SearchProfessor</servlet-name>
+        <url-pattern>/SearchProfessor</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>DeleteProfessor</servlet-name>
+        <url-pattern>/DeleteProfessor</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>AddProfessor</servlet-name>
+        <url-pattern>/AddProfessor</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>UpdateProfessor</servlet-name>
+        <url-pattern>/UpdateProfessor</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>UpdateProfessorFinal</servlet-name>
+        <url-pattern>/UpdateProfessorFinal</url-pattern>
+    </servlet-mapping>
+
 
     <servlet>
         <servlet-name>Jersey Web Application</servlet-name>
@@ -75,5 +156,15 @@
     <servlet-mapping>
         <servlet-name>Jersey Web Application</servlet-name>
         <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>forAdmin</servlet-name>
+        <servlet-class>webapp.forAdmin</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>forAdmin</servlet-name>
+        <url-pattern>/forAdmin</url-pattern>
     </servlet-mapping>
 </web-app>
